@@ -35,7 +35,7 @@ def gauss_fit():
     outWidths_err = numpy.zeros(len(test_set_x))
     outWidths_unscl = numpy.zeros(len(test_set_x))
     for i in range(len(test_set_x)):
-        popt, pcov = curve_fit(Gauss,x,test_set_x[i],p0=(1.0,0.,1.))
+        popt, pcov = curve_fit(Gauss,x,test_set_x[i],p0=(1.0,0.,1.0),maxfev=10000)
         outWidths_unscl[i] = popt[2]
         outWidths[i] = int(round(popt[2],1)*10)
         outWidths_err[i] = numpy.sqrt(pcov[2][2])
